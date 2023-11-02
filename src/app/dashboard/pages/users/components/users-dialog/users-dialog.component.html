@@ -1,0 +1,84 @@
+<h1 mat-dialog-title>
+  {{ user ? "Editando usuario" : "Crear usuario" }}
+</h1>
+
+<div mat-dialog-content>
+  <!-- Contenido... -->
+
+  <form [formGroup]="userForm">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="w-100">
+          <mat-label>Nombre</mat-label>
+          <input formControlName="name" matInput />
+          <mat-error>
+            {{ userForm.get("name")?.errors | formErrors }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="w-100">
+          <mat-label>Apellido</mat-label>
+          <input formControlName="lastName" matInput />
+          <mat-error>
+            {{ userForm.get("lastName")?.errors | formErrors }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="w-100">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input formControlName="birthDate" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>
+              {{ userForm.get("birthDate")?.errors | formErrors }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="w-100">
+            <mat-label>Calle</mat-label>
+            <input formControlName="street" matInput />
+            <mat-error>
+              {{ userForm.get("street")?.errors | formErrors }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="w-100">
+            <mat-label>Ciudad</mat-label>
+            <input formControlName="city" matInput />
+            <mat-error>
+              {{ userForm.get("city")?.errors | formErrors }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="w-100">
+            <mat-label>Código Postal</mat-label>
+            <input formControlName="zipCode" matInput />
+            <mat-error>
+              {{ userForm.get("zipCode")?.errors | formErrors }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-12">
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput />
+          <mat-error>
+            {{ userForm.get("email")?.errors | formErrors }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-dialog-close mat-button>Cancelar</button>
+  <button (click)="onSubmit()" mat-button>Guardar</button>
+</div>
